@@ -1,4 +1,4 @@
-* Voc trainer
+* Voc Trainer
 This is a school project with the goal of teaching a bit more of absolutely basic database knowledge to my class.
 Keep in mind that the database and my presentation itself are the only parts, which really matters for this project.
 The code itself basically doesn't matter at all, except that it makes the thing running.
