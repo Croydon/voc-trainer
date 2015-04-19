@@ -24,6 +24,9 @@ $f3->route("GET /@page",
 		{
 			require("app/".$params["page"]);
 		}
+		{
+			$f3->reroute("/"); // Could be used for a 404 page
+		}
 	}
 );
 

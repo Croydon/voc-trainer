@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="<?php echo $ENCODING; ?>">
-		<title>Voc Trainer</title>
+		<meta charset="utf-8">
+		<title>Voc Trainer <?php if (Base::instance()->get("title") != "") { echo "· ". Base::instance()->get("title"); } ?></title>
 		<base href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/'; ?>">
 		<link rel="stylesheet" href="lib/code.css" type="text/css">
 		<link rel="stylesheet" href="ui/css/base.css" type="text/css">
 		<link rel="stylesheet" href="ui/css/theme.css" type="text/css">
+		<link rel="icon" href="ui/images/icon/student.ico">
 	</head>
 	<body>
-		<!--php echo $this->render(Base::instance()->get('content')); ?-->
+		<?php echo $this->render(Base::instance()->get("page")); ?>
 	</body>
 </html>
