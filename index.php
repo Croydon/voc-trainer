@@ -20,9 +20,10 @@ $f3->route("GET /",
 // Routing any other page
 $f3->route("GET /@page",
 	function($f3, $params) {
-		if(ctype_alnum( $f3->clean($params["page"]) ) AND file_exists("app/".$params["page"]))
+		$cleanPage = $f3->clean($params["page"]);
+		if(ctype_alnum( $cleanPage ) AND file_exists("app/".$cleanPage.".php"))
 		{
-			require("app/".$params["page"]);
+			require("app/".$cleanPage.".php");
 		}
 		{
 			$f3->reroute("/"); // Could be used for a 404 page
