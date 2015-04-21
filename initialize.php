@@ -7,7 +7,7 @@ if ((float)PCRE_VERSION<7.9)
 	trigger_error("PCRE version is out of date");
 
 // Load configuration
-$f3->config("config.ini");
+$f3->config("app/config/general.ini");
 
 // Connect to the database
 if($f3->get("ENABLEDB") == "1") 
