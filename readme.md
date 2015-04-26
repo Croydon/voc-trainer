@@ -13,10 +13,10 @@ The code is, like the [Fat-Free Framework](https://github.com/bcosca/fatfree), o
 
 Requirements: 
  * PHP >= 5.4
- * MariaDB/MySQL 5.6
+ * MariaDB/MySQL >= 5.6
  
 In theory it should also work with PHP 5.3 and older version of the database, 
-however neither it's recommend to run these version, nor it is tested in any way.
+however neither it's recommend to run these versions, nor is it tested in any way.
 
 Steps:
  * Import the database schema into your database
