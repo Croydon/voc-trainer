@@ -8,6 +8,7 @@
 		$f3->set("headline", "Welcome to your personal Voc Trainer");
 		$f3->set("users", $f3->db->exec("SELECT username FROM ". $f3->get("prefix") ."user"));
 	}
+	else
 	{
 		$f3->set("title", "Welcome · Login");
 		$f3->set("page", "login.htm");
