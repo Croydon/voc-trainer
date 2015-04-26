@@ -25,4 +25,6 @@ foreach($f3->get("MODULE") AS $modul)
 	require($f3->get("MODULEDIR")."/".$modul.".php");
 }
 
+$f3->set("langID", "2"); // English, could be easily changed at anytime
+$f3->set("langPair", "1"); // German, as the own main language of the user
 ?>

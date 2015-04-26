@@ -2,7 +2,7 @@
 -- version 4.2.12
 -- http://www.phpmyadmin.net
 --
--- Erstellungszeit: 21. Apr 2015 um 21:12
+-- Erstellungszeit: 26. Apr 2015 um 14:17
 -- Server Version: 5.5.42-log
 -- PHP-Version: 5.3.27
 
@@ -23,8 +23,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `voc_chapter` (
 `id` int(5) NOT NULL,
-  `title` int(70) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
+  `lang` int(2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Daten für Tabelle `voc_chapter`
+--
+
+INSERT INTO `voc_chapter` (`id`, `title`, `lang`) VALUES
+(1, 'Unit 10', 2),
+(2, 'Unit 11', 2);
 
 -- --------------------------------------------------------
 
@@ -102,7 +111,6 @@ CREATE TABLE IF NOT EXISTS `voc_word` (
 CREATE TABLE IF NOT EXISTS `voc_word_unit` (
 `id` int(6) NOT NULL,
   `word` int(6) NOT NULL,
-  `lang` int(2) NOT NULL,
   `chapter` int(5) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -114,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `voc_word_unit` (
 -- Indizes für die Tabelle `voc_chapter`
 --
 ALTER TABLE `voc_chapter`
- ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `lang` (`lang`);
 
 --
 -- Indizes für die Tabelle `voc_lang`
@@ -150,8 +158,51 @@ ALTER TABLE `voc_word`
 -- Indizes für die Tabelle `voc_word_unit`
 --
 ALTER TABLE `voc_word_unit`
- ADD PRIMARY KEY (`id`), ADD KEY `word` (`word`), ADD KEY `lang` (`lang`), ADD KEY `chapter` (`chapter`);
+ ADD PRIMARY KEY (`id`), ADD KEY `word` (`word`), ADD KEY `chapter` (`chapter`);
 
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `voc_chapter`
+--
+ALTER TABLE `voc_chapter`
+MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT für Tabelle `voc_lang`
+--
+ALTER TABLE `voc_lang`
+MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT für Tabelle `voc_stats`
+--
+ALTER TABLE `voc_stats`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT für Tabelle `voc_translation`
+--
+ALTER TABLE `voc_translation`
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT für Tabelle `voc_word`
+--
+ALTER TABLE `voc_word`
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT für Tabelle `voc_word_unit`
+--
+ALTER TABLE `voc_word_unit`
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- Constraints der exportierten Tabellen
+--
+
+--
+-- Constraints der Tabelle `voc_chapter`
+--
+ALTER TABLE `voc_chapter`
+ADD CONSTRAINT `voc_chapter_ibfk_1` FOREIGN KEY (`lang`) REFERENCES `voc_lang` (`id`);
 
 --
 -- Constraints der Tabelle `voc_stats`
@@ -164,9 +215,8 @@ ADD CONSTRAINT `voc_stats_ibfk_2` FOREIGN KEY (`user`) REFERENCES `voc_user` (`i
 -- Constraints der Tabelle `voc_word_unit`
 --
 ALTER TABLE `voc_word_unit`
-ADD CONSTRAINT `voc_word_unit_ibfk_3` FOREIGN KEY (`chapter`) REFERENCES `voc_chapter` (`id`),
 ADD CONSTRAINT `voc_word_unit_ibfk_1` FOREIGN KEY (`word`) REFERENCES `voc_word` (`id`),
-ADD CONSTRAINT `voc_word_unit_ibfk_2` FOREIGN KEY (`lang`) REFERENCES `voc_lang` (`id`);
+ADD CONSTRAINT `voc_word_unit_ibfk_3` FOREIGN KEY (`chapter`) REFERENCES `voc_chapter` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
