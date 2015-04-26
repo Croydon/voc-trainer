@@ -153,11 +153,6 @@
                         <li>
                             <a href="/home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
-						<?php if(file_exists("app/imprint.php")) { ?>
-						<li>
-                            <a href="/imprint"><i class="fa fa-info-circle fa-fw"></i> Imprint</a>
-                        </li>
-						<?php } ?>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -171,16 +166,16 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a href="/words"><i class="fa fa-table fa-fw"></i> Words</a>
                         </li>
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-gears fa-fw"></i> Administration<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
+                                    <a href="/user">User</a>
                                 </li>
                                 <li>
                                     <a href="buttons.html">Buttons</a>
@@ -200,6 +195,11 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+						<?php if(file_exists("app/imprint.php")) { ?>
+						<li>
+                            <a href="/imprint"><i class="fa fa-info-circle fa-fw"></i> Imprint</a>
+                        </li>
+						<?php } ?>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
