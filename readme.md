@@ -16,8 +16,8 @@ Requirements:
  * MariaDB/MySQL >= 5.6
  
 In theory it should also work with PHP 5.3 and older version of the database, 
-however neither it's recommended to run these versions, nor is it tested in any way.
+however neither is it recommended to run these versions, nor is it tested in any way.
 
 Steps:
  * Import the database schema into your database
- * Rename app/config/db-example.php to db.php, edit the file and add your database connection information
+ * Rename `app/config/db-example.php` to `db.php`, edit the file and add your database connection information
