@@ -14,5 +14,9 @@ ui/bower_components/*
 ## Custom
 ######################
 app/config/db.php
+app/imprint.php
+ui/imprint.htm
+ui/image/imprint.png
+
 
 
