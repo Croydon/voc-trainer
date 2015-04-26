@@ -26,5 +26,7 @@ foreach($f3->get("MODULE") AS $modul)
 }
 
 $f3->set("langID", "2"); // English, could be easily changed at anytime
-$f3->set("langPair", "1"); // German, as the own main language of the user
+$f3->set("langName", "English");
+$f3->set("langPairID", "1"); // German, as the own main language of the user
+$f3->set("langPairName", "Deutsch"); // German, as the own main language of the user
 ?>
