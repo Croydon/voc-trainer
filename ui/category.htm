@@ -11,6 +11,7 @@
 					<span id="categoryID"><?php echo Base::instance()->get("categoryID"); ?></span>
 				</div>
 				<div class="table-responsive">
+					<form id="saveWordForm" role="form" method="POST">
 					<table class="table table-striped" id="categoryOverview">
 						<thead>
 							<tr>
@@ -18,19 +19,19 @@
 								<th>Translation</th>
 								<th></th>
 							</tr>
+							<tr id="add">
+								<td><input class="form-control" placeholder="Word in <?php echo Base::instance()->get("langName");?>" name="word1" type="text" autofocus></td>	
+								<td><input class="form-control" placeholder="Translation in <?php echo Base::instance()->get("langPairName");?>" name="word2" type="text" autofocus></td>	
+								<td><button type="submit" id="saveWordToCategory" class="btn btn-success">Save</button></td>
+							</tr>
 						</thead>
 						<tbody>
-						<tr id="add">
-							<td><input class="form-control" placeholder="Word in <?php echo Base::instance()->get("langName");?>" name="word1" type="text" autofocus></td>	
-							<td><input class="form-control" placeholder="Translation in <?php echo Base::instance()->get("langPairName");?>" name="word2" type="text" autofocus></td>	
-							<td><button type="button" id="saveWordToCategory" class="btn btn-success">Save</button></td>
-						</tr>
-
 						<?php foreach(Base::instance()->get("words") AS $word) {
 							echo "<tr><td>". $word["word"] ."</td><td>". $word["translation"] ."</td><td><!--<a href='/category/".$word["unitID"]."'><span class='fa fa-gear fa-fw' title='Manage words'></span></a>--></td></tr>";
 						} ?>
 						</tbody>
 					</table>
+					</form>
 				</div>
 			</div>
 		</div>

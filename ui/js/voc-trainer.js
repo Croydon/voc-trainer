@@ -22,7 +22,10 @@ function save_word_to_category()
 		}
 		else
 		{
-			$("#categoryOverview tbody #add").append("<tr> <td>"+ word1 +"</td> <td>"+ word2 +"</td> <td></td> </tr>");
+			$("#categoryOverview tbody").prepend("<tr> <td>"+ word1 +"</td> <td>"+ word2 +"</td> <td></td> </tr>");
+			$("input[name=word1]").val("");	
+			$("input[name=word2]").val("");	
+			$("input[name=word1]").focus();
 		}
 	}	
 	});

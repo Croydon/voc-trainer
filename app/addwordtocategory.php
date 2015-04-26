@@ -27,7 +27,12 @@
 	
 	$translationID = save_translation($wordID1, $wordID2);
 	
-	save_word_unit($translationID, $_POST["categoryID"]);
-	
-	echo json_encode(array("status" => "1")); 
+	if(save_word_unit($translationID, $_POST["categoryID"]) != false)
+	{
+		echo json_encode(array("status" => "1")); 
+	}
+	else
+	{
+		echo json_encode(array("status" => "0")); 
+	}
 ?>
