@@ -62,4 +62,33 @@ function save_word_unit($translationID, $chapterID)
 	}
 }
 
+function get_word_by_unit($unitID, $translation = false)
+{
+	global $f3;
+	
+	if(!is_numeric($unitID)) { return false; }
+	
+	$wordUnit = $f3->db->exec("SELECT wordTranslation FROM ".$f3->get("prefix")."word_unit WHERE id = '". $unitID ."' LIMIT 1");	
+	
+	if(!isset($wordUnit[0]["wordTranslation"]))
+	{
+		return false;
+	}
+	
+	if($translation == false)
+	{
+		$wordTranslation = $f3->db->exec("SELECT wordID1 FROM ".$f3->get("prefix")."translation WHERE id = '". $wordUnit[0]["wordTranslation"] ."' LIMIT 1");	
+		$wordID = $wordTranslation[0]["wordID1"];
+	}
+	else
+	{
+		$wordTranslation = $f3->db->exec("SELECT wordID2 FROM ".$f3->get("prefix")."translation WHERE id = '". $wordUnit[0]["wordTranslation"] ."' LIMIT 1");
+		$wordID = $wordTranslation[0]["wordID2"];
+	}
+	
+	$actualWord = $f3->db->exec("SELECT word FROM ".$f3->get("prefix")."word WHERE id = '". $wordID ."' LIMIT 1");
+	
+	return $actualWord[0]["word"];
+}
+
 ?>
