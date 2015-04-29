@@ -30,14 +30,14 @@
 	{
 		if (substr($actualWord, 0, strlen($prefix)) == $prefix) 
 		{
-			$actualWord = substr($actualWord, strlen($prefix));
+			$actualWordCleaned = substr($actualWord, strlen($prefix));
 		}
 	}
 
 	// Remove start and end spaces, if existing
 	$userAnswer = trim($userAnswer);
 	
-	if($userAnswer == $actualWord)
+	if($userAnswer == $actualWord OR $userAnswer == $actualWordCleaned)
 	{
 		echo json_encode(array("status" => "1", "correct" => "1")); 
 	}
