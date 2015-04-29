@@ -75,13 +75,13 @@
                         <li>
                             <a href="/home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
+						<?php if(Base::instance()->get("loggedIn") == true) { ?>
                         <li>
                             <a href="/words"><i class="fa fa-table fa-fw"></i> Words</a>
                         </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-						<?php if(Base::instance()->get("userid") == "1") { ?>
+						<?php } 
+						
+						if(Base::instance()->get("userid") == "1") { ?>
                         <li>
                             <a href="#"><i class="fa fa-gears fa-fw"></i> Administration<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">

@@ -1,6 +1,12 @@
 <?php
 	if(!isset($f3)) { http_response_code(404); exit; }
 	
+	if($f3->get("loggedIn") == false)
+	{
+		$f3->reroute("login/words");
+		exit;
+	}
+	
 	$f3->set("title", "Words");
 	$f3->set("page", "words.htm");
 	$f3->set("headline", "Words");
