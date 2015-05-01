@@ -6,17 +6,18 @@
 		<title>Voc Trainer <?php if (Base::instance()->get("title") != "") { echo "· ". Base::instance()->get("title"); } ?></title>
 		<base href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/'; ?>">
 		<link rel="icon" href="ui/image/icon/student.ico">
-		<!-- Bootstrap Core CSS -->
+
 		<link rel="stylesheet" href="ui/css/bootstrap.min.css">
-
-		<!-- MetisMenu CSS -->
 		<link rel="stylesheet" href="ui/css/metisMenu.min.css">
-
-		<!-- Custom CSS -->
 		<link rel="stylesheet" href="ui/css/sb-admin-2.css">
-
-		<!-- Custom Fonts -->
-		<link rel="stylesheet"  href="ui/css/font-awesome.min.css">
+		<link rel="stylesheet" href="ui/css/font-awesome.min.css">
+		
+		<script src="ui/js/jquery.min.js"></script>
+		<script src="ui/js/bootstrap.min.js"></script>
+		<script src="ui/js/metisMenu.min.js"></script>
+		<script src="ui/js/sb-admin-2.js"></script>
+		<script src="ui/js/voc-trainer.js"></script>
+		<script src="ui/js/ui-toggle.js"></script>
 	</head>
 	<body>
 		
@@ -112,21 +113,5 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="ui/js/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="ui/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="ui/js/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="ui/js/sb-admin-2.js"></script>
-
-	<script src="ui/js/voc-trainer.js"></script>
-	<script src="ui/js/ui-toggle.js"></script>
-
 </body>
-
 </html>
