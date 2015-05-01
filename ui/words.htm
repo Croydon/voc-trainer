@@ -38,7 +38,7 @@
 						</thead>
 						<tbody>
 			<?php foreach(Base::instance()->get("categories") AS $category) {
-				echo "<tr><td>". $category["title"] ."</td><td>". $category["amount"] ."</td><td><a href='/category/".$category["id"]."'><span class='fa fa-gear fa-fw' title='Manage words'></span></a></td></tr>";
+				echo "<tr><td><a href='/training/category/?id=".$category["id"]."'><span class='fa fa-play-circle-o'></span> ". $category["title"] ."</td><td>". $category["amount"] ."</td><td><a href='/category/".$category["id"]."'><span class='fa fa-gear fa-fw' title='Manage words'></span></a></td></tr>";
 			} ?>
 						</tbody>
 					</table>
