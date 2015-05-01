@@ -16,5 +16,5 @@
 	
 	$actualWord = get_word_by_unit($_GET["wordUnitID"], true);
 	
-	echo json_encode(array("status" => "0", "word" => $actualWord)); 
+	echo json_encode(array("status" => "1", "word" => $actualWord)); 
 ?>
