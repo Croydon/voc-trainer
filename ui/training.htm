@@ -4,8 +4,25 @@
 			<div class="panel-heading">
 				Have fun :)
 			</div>
-			<div class="panel-body">
-			
+			<div class="panel-body">	
+				<form action="#" method="POST" role="form">
+					<div class="form-inline">
+						<div class="form-group input-group" style="width:80%;">
+							<span class="input-group-addon"><label class="fa fa-play"></label></span>
+							<input id="trainingWord" class="form-control" disabled>
+						</div>
+						<div class="form-group">
+							<p class="form-control-static"><span id="trainingCurrentProgress">0</span> / <span id="trainingAmountWords">∞</span></p>
+						</div>
+					</div>
+					<div class="form-inline">
+						<div class="form-group input-group" style="width:80%;">
+							<span class="input-group-addon"><label class="fa fa-play"></label></span>
+							<input class="form-control" placeholder="Your translation" autofocus>
+						</div>
+						<button type="submit" class="btn btn-default">Check</button>
+					</div>
+				</form>
 			</div>
 		</div>
 		<div class="panel panel-default">
