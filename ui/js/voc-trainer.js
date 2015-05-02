@@ -57,6 +57,7 @@ function training_load_word()
 		
 		currentWord = data["word"];
 		$("input[id=trainingWord]").val(currentWord);
+		currentChecking = false;
 	});
 }
 
@@ -89,7 +90,6 @@ function training_check_word()
 		
 		$("input[name=wordTranslation]").val("");
 		$("input[name=wordTranslation]").focus();
-		currentChecking = false;
 		trainingI++;
 		training_load_word();
 	});	
