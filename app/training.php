@@ -3,7 +3,7 @@
 	
 	if($f3->get("loggedIn") == false)
 	{
-		$f3->reroute("/login/training");
+		$f3->reroute("/login/words");
 		exit;
 	}
 
