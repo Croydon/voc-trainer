@@ -45,6 +45,7 @@
 	}
 	
 	$f3->set("categories", $categories);
+	$f3->set("levels", stats_get_levels_with_word_amount());
 	
 	echo View::instance()->render("layout.htm");
 ?>

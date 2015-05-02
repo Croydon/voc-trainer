@@ -34,6 +34,24 @@
 			$wordUnits[] = $wordUnit["id"];
 		}
 	}
+	elseif($f3->get("action") == "level" AND is_numeric($_GET["id"]))
+	{
+		if($_GET["id"] == 0)
+		{
+			$workAround = stats_get_levels_with_word_amount();	
+			$wordUnits = $workAround[0]["wordUnits"];
+		}
+		else
+		{
+			$wordUnits = stats_get_specific_level_with_wordUnits($_GET["id"]);
+		}
+		$f3->set("headline", "Training · ". stats_get_level_name($_GET["id"]));
+	}
+	else
+	{
+		$f3>reroute("/words"); 
+		exit;
+	}
 	
 	$f3->set("title", "Training");
 	$f3->set("page", "training.htm");

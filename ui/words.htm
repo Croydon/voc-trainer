@@ -5,6 +5,23 @@
 				Card file box
 			</div>
 			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Level</th>
+								<th>Words</th>
+							</tr>
+						</thead>
+						<tbody>
+			<?php $i = 0;
+			foreach(Base::instance()->get("levels") AS $level) {
+				echo "<tr><td><a href='/training/level/?id=".$i."'><span class='fa fa-play-circle-o'></span> ". $level["title"] ."</td><td>". $level["amount"] ."</td></tr>";
+				$i++;
+			} ?>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

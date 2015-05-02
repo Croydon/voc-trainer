@@ -48,7 +48,7 @@ function stats_get_specific_level_with_wordUnits($level)
 	global $f3;
 	
 	$levelWordUnits = array();
-	foreach($f3->db->exec("SELECT word_unit FROM ".$f3->get("prefix")."stats WHERE AND user = '". $f3->get("userid") ."' AND section = '". $level ."'") AS $level)
+	foreach($f3->db->exec("SELECT word_unit FROM ".$f3->get("prefix")."stats WHERE user = '". $f3->get("userid") ."' AND section = '". $level ."'") AS $level)
 	{
 		$levelWordUnits = $level["word_unit"];
 	}
@@ -67,7 +67,7 @@ function stats_get_levels_with_word_amount()
 	for($i = 1; $i <= 4; $i++)
 	{
 		$levelWordUnits = stats_get_specific_level_with_wordUnits($i);
-		$levels[$i]["name"] = stats_get_level_name($i);
+		$levels[$i]["title"] = stats_get_level_name($i);
 		$levels[$i]["wordUnits"] = $levelWordUnits;
 		$levels[$i]["amount"] =  count($levelWordUnits);
 		
@@ -84,10 +84,12 @@ function stats_get_levels_with_word_amount()
 
 	$level0WordUnits = array_diff($allWordUnits, $allWordUnitsWithStats);
 	
-	$levels[0]["name"] = stats_get_level_name(0);
-	$levels[0]["wordUnits"] = $level0WordUnits;
-	$levels[0]["amount"] = count($level0WordUnits);
+	$level0 = array();
+	$level0[0]["title"] = stats_get_level_name(0);
+	$level0[0]["wordUnits"] = $level0WordUnits;
+	$level0[0]["amount"] = count($level0WordUnits);
 	
+	$levels = array_merge($level0, $levels);
 	return $levels;
 }
 
