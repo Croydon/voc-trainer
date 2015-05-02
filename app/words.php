@@ -35,7 +35,7 @@
 	}
 	
 	$categories = array(); $i = 0;
-	foreach($f3->db->exec("SELECT * FROM ".$f3->get("prefix")."chapter") AS $chapter)
+	foreach($f3->db->exec("SELECT * FROM ".$f3->get("prefix")."chapter WHERE lang = '". $f3->get("langID") ."'") AS $chapter)
 	{
 		$f3->db->exec("SELECT id FROM ".$f3->get("prefix")."word_unit WHERE chapter = '". $chapter['id'] ."'");	
 		$categories[$i]["id"] = $chapter["id"];
