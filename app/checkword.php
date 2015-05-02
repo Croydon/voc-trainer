@@ -17,6 +17,7 @@
 
 	
 	$actualWord = get_word_by_unit($_GET["wordUnitID"], false);
+	$actualWordCleaned = $actualWord;
 	
 	if($f3->get("langID") == "2")
 	{
@@ -39,10 +40,10 @@
 	
 	if($userAnswer == $actualWord OR $userAnswer == $actualWordCleaned)
 	{
-		echo json_encode(array("status" => "1", "correct" => "1")); 
+		echo json_encode(array("status" => "1", "correct" => "1", "correctWord" => $actualWord)); 
 	}
 	else
 	{
-		echo json_encode(array("status" => "1", "correct" => "0")); 
+		echo json_encode(array("status" => "1", "correct" => "0", "correctWord" => $actualWord)); 
 	}
 ?>

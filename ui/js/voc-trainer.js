@@ -30,3 +30,69 @@ function save_word_to_category()
 	}	
 	});
 }
+
+function training_start()
+{
+	wordAmount = Object.keys(wordUnits).length;
+	$("span[id=trainingAmountWords]").html(wordAmount);
+	
+	trainingI = 0;
+	
+	training_load_word();
+}
+
+function training_load_word()
+{
+	$("span[id=trainingCurrentProgress]").html(trainingI + 1);
+	
+	currentWordUnit = wordUnits[trainingI];
+	
+	$.getJSON("/getword", {wordUnitID: currentWordUnit}).success( function(data) 
+	{
+		if(data["status"] == 0)
+		{
+			alert("Some error occured :(");
+			return false;
+		}
+		
+		currentWord = data["word"];
+		$("input[id=trainingWord]").val(currentWord);
+	});
+}
+
+currentChecking = false;
+
+function training_check_word()
+{
+	if(currentChecking == true) { return false; } 
+	
+	currentAnswer = $("input[name=wordTranslation]").val();
+	currentChecking = true;
+	$.getJSON("/checkword", {wordUnitID: currentWordUnit, userAnswer: currentAnswer}).success( function(data) 
+	{
+		if(data["status"] == 0)
+		{
+			alert("Some error occured :(");
+			return false;
+		}
+		
+		if(data["correct"] == 0)
+		{
+			// The user answer is wrong
+			$("#trainingResults tbody").prepend("<tr class='danger'> <td>"+ data['correctWord'] +"</td> <td>"+ currentAnswer +"</td> <td>"+ currentWord +"</td> </tr>");
+		}
+		else
+		{
+			// The user answer is right
+			$("#trainingResults tbody").prepend("<tr class='success'> <td>"+ data['correctWord'] +"</td> <td>"+ currentAnswer +"</td> <td>"+ currentWord +"</td> </tr>");
+		}
+		
+		$("input[name=wordTranslation]").val("");
+		$("input[name=wordTranslation]").focus();
+		currentChecking = false;
+		trainingI++;
+		training_load_word();
+	});	
+	
+	return false;
+}

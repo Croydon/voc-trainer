@@ -5,7 +5,7 @@
 				Have fun :)
 			</div>
 			<div class="panel-body">	
-				<form action="#" method="POST" role="form">
+				<form id="trainingForm" action="#" method="POST" role="form">
 					<div class="form-inline">
 						<div class="form-group input-group" style="width:80%;">
 							<span class="input-group-addon"><label class="fa fa-play"></label></span>
@@ -18,7 +18,7 @@
 					<div class="form-inline">
 						<div class="form-group input-group" style="width:80%;">
 							<span class="input-group-addon"><label class="fa fa-play"></label></span>
-							<input class="form-control" placeholder="Your translation" autofocus>
+							<input name="wordTranslation" class="form-control" placeholder="Your translation" autocomplete="off" autofocus>
 						</div>
 						<button type="submit" class="btn btn-default">Check</button>
 					</div>
@@ -48,6 +48,6 @@
 	</div>
 </div>
 <script>
-	$(document).ready(function() { wordUnits = $.parseJSON('<?php echo json_encode(Base::instance()->get("wordUnits")); ?>'); }
+	$(document).ready(function() { wordUnits = $.parseJSON('<?php echo json_encode(Base::instance()->get("wordUnits")); ?>'); training_start(); });
 </script>
 
