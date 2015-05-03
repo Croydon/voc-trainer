@@ -36,9 +36,16 @@ function training_start()
 	wordAmount = Object.keys(wordUnits).length;
 	$("span[id=trainingAmountWords]").html(wordAmount);
 	
-	trainingI = 0;
+	if(wordAmount > 0)
+	{
+		trainingI = 0;
 	
-	training_load_word();
+		training_load_word();
+	}
+	else
+	{
+		alert("This level or category has no words.");
+	}
 }
 
 function training_load_word()
@@ -65,7 +72,7 @@ currentChecking = false;
 
 function training_check_word()
 {
-	if(currentChecking == true) { return false; } 
+	if(currentChecking == true || wordAmount == 0) { return false; } 
 	
 	currentAnswer = $("input[name=wordTranslation]").val();
 	currentChecking = true;
@@ -90,8 +97,18 @@ function training_check_word()
 		
 		$("input[name=wordTranslation]").val("");
 		$("input[name=wordTranslation]").focus();
+		
 		trainingI++;
-		training_load_word();
+		if(trainingI < wordAmount)
+		{
+			training_load_word();
+		}
+		else
+		{
+			$("input[name=wordTranslation]").prop("disabled", true);
+			$("input[id=trainingWord]").val("Finished!");
+			$("input[name=wordTranslation]").val("Finished!");
+		}
 	});	
 	
 	return false;
