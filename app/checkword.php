@@ -40,10 +40,12 @@
 	
 	if($userAnswer == $actualWord OR $userAnswer == $actualWordCleaned)
 	{
+		stats_save($_GET["wordUnitID"], true);
 		echo json_encode(array("status" => "1", "correct" => "1", "correctWord" => $actualWord)); 
 	}
 	else
 	{
+		stats_save($_GET["wordUnitID"], false);
 		echo json_encode(array("status" => "1", "correct" => "0", "correctWord" => $actualWord)); 
 	}
 ?>
