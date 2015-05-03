@@ -1,5 +1,15 @@
-<div class="footer center">
-	<p>Fat-Free Framework is licensed under the terms of the GPL, either v3 or later<br>
-	Copyright &copy; 2009-2015 F3::Factory/Bong Cosca &lt;bong&#46;cosca&#64;yahoo&#46;com&gt;</p>
-	<p class="stats"><code><?php echo Base::instance()->format('Page rendered in {0} msecs / Memory usage {1} Kibytes',round(1e3*(microtime(TRUE)-$TIME),2),round(memory_get_usage(TRUE)/1e3,1)); ?></code></p>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Hi <?php echo Base::instance()->get("username"); ?>!
+			</div>
+			<div class="panel-body">
+				This is your personal vocabular trainer. You can start by adding words you want to learn and pratice them afterwards.
+				Furthermore, you can traing your words either by going through the catagories of your words or by going through the levels. The levels of the words represents how often you got them right.
+			</div>
+		</div>
+	</div>
 </div>
+
+	<?php //echo Base::instance()->format('Page rendered in {0} msecs / Memory usage {1} Kibytes',round(1e3*(microtime(TRUE)-$TIME),2),round(memory_get_usage(TRUE)/1e3,1)); ?>
