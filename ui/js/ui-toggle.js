@@ -7,4 +7,5 @@ $(document).ready(function() {
 		
 	// Training
 		$("#trainingForm").submit(function() { training_check_word(); return false; });
+
 });
