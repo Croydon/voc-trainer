@@ -43,14 +43,21 @@ function stats_get_level_name($levelNum)
 	}
 }
 
-function stats_get_specific_level_with_wordUnits($level)
+function stats_get_specific_level_with_wordUnits($level, $purposeAllLevels = false)
 {
 	global $f3;
 	
 	$levelWordUnits = array();
 	foreach($f3->db->exec("SELECT word_unit FROM ".$f3->get("prefix")."stats WHERE user = '". $f3->get("userid") ."' AND section = '". $level ."'") AS $level)
 	{
-		$levelWordUnits = $level["word_unit"];
+		if($purposeAllLevels == true)
+		{
+			$levelWordUnits[$level["word_unit"]] = $level["word_unit"];
+		}
+		else
+		{
+			$levelWordUnits[] = $level["word_unit"];
+		}
 	}
 	
 	return $levelWordUnits;
@@ -66,23 +73,30 @@ function stats_get_levels_with_word_amount()
 	
 	for($i = 1; $i <= 4; $i++)
 	{
-		$levelWordUnits = stats_get_specific_level_with_wordUnits($i);
+		$levelWordUnits = stats_get_specific_level_with_wordUnits($i, true);
 		$levels[$i]["title"] = stats_get_level_name($i);
 		$levels[$i]["wordUnits"] = $levelWordUnits;
 		$levels[$i]["amount"] =  count($levelWordUnits);
 		
-		$allWordUnitsWithStats = array_merge($allWordUnits, $levelWordUnits);
+		$allWordUnitsWithStats = array_merge($allWordUnitsWithStats, $levelWordUnits);
 	}
 	
 	foreach($f3->db->exec("SELECT * FROM ".$f3->get("prefix")."chapter WHERE lang = '". $f3->get("langID") ."'") AS $chapter)
 	{
 		foreach($f3->db->exec("SELECT id FROM ".$f3->get("prefix")."word_unit WHERE chapter = '". $chapter['id'] ."'") AS $wordUnit)
 		{
-			$allWordUnits[] = $wordUnit["id"];
+			$allWordUnits[$wordUnit["id"]] = $wordUnit["id"];
 		}
 	}
 
-	$level0WordUnits = array_diff($allWordUnits, $allWordUnitsWithStats);
+	$level0WordUnits_diff = array_diff($allWordUnits, $allWordUnitsWithStats);
+	
+	$level0WordUnits = array();
+	// The following stupid loop is just that Javascript can access the data easier
+	foreach($level0WordUnits_diff AS $leven0WordUnit)
+	{
+		$level0WordUnits[] = $leven0WordUnit;
+	}
 	
 	$level0 = array();
 	$level0[0]["title"] = stats_get_level_name(0);
@@ -110,7 +124,7 @@ function stats_save($wordUnitID, $up = true)
 			$newLevel = 1;
 		}
 		
-		$f3->db->exec("INSER INTO ".$f3->get("prefix")."stats (word_unit, user, section) VALUES ('". $wordUnitID ."', '". $f3->get("userid") .", '". $newLevel ."')");
+		$f3->db->exec("INSERT INTO ".$f3->get("prefix")."stats (word_unit, user, section) VALUES ('". $wordUnitID ."', '". $f3->get("userid") ."', '". $newLevel ."')");
 	}
 	else
 	{
@@ -128,12 +142,12 @@ function stats_save($wordUnitID, $up = true)
 			$newLevel = 1;
 		}
 		
-		if($newLevel > 5)
+		if($newLevel > 4)
 		{
-			$newLevel = 5;
+			$newLevel = 4;
 		}
 		
-		$f3->db->exec("UPDATER ".$f3->get("prefix")."stats SET section = '". $newLevel ."' WHERE word_unit = '". $wordUnitID ."' AND user = '". $f3->get("userid") ."' LIMIT 1");
+		$f3->db->exec("UPDATE ".$f3->get("prefix")."stats SET section = '". $newLevel ."' WHERE word_unit = '". $wordUnitID ."' AND user = '". $f3->get("userid") ."' LIMIT 1");
 	}
 }
 ?>
