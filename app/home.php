@@ -4,9 +4,7 @@
         http_response_code(404);
         exit();
     }
-    
-    $f3->db->exec("SELECT id FROM " . $f3->get("prefix") . "user WHERE id = '1'");
-    
+        
     if ($f3->get("loggedIn") == true)
     {
         $f3->set("title", "Welcome");
@@ -15,6 +13,8 @@
     }
     else
     {
+    	$f3->db->exec("SELECT id FROM " . $f3->get("prefix") . "user WHERE id = '1'");
+    	 
         if ($f3->db->count() == 0)
         {
             $f3->set("title", "Welcome · Register an admin");
