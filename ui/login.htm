@@ -1,5 +1,10 @@
 
 <div class="col-md-6 col-md-offset-2">
+	<?php if (Base::instance()->get("status") == "account_deleted") { ?>
+			<div class="alert alert-danger">
+				Your account has been deleted.
+			</div>
+	<?php } ?>
 	<div class="login-panel panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Please Sign In</h3>
