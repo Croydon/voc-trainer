@@ -35,17 +35,27 @@
 				</form>
 			</div>
 		</div>
-		
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				Delete account
+		<?php if (Base::instance()->get("userid") != "1") { ?>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Delete account
+				</div>
+				<div class="panel-body">
+					<?php if (Base::instance()->get("accountDeletePassword") == "notCorrect") { ?>
+						<div class="alert alert-danger">
+							Your password you typed in isn't correct.
+						</div>
+					<?php  } ?>
+					<form action="/user/settings?deleteaccount" method="POST">
+						<p>If you want to delete your account, you have to confirm it with your password.</p>
+						<div class="form-group">
+							<label>Password</label>
+							<input name="password" type="password" class="form-control">
+						</div>
+						<button type="submit" class="btn btn-danger">Delete my account</button>
+					</form>
+				</div>
 			</div>
-			<div class="panel-body">
-				<form action="/user/settings?deleteaccount" method="POST">
-					<p>Press this button, to delete your account permanently.</p>
-					<button type="submit" class="btn btn-danger">Delete my account</button>
-				</form>
-			</div>
-		</div>
+		<?php } ?>
 	</div>
 </div>
