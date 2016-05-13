@@ -34,19 +34,22 @@
 		}
 	}
 	
-	if(isset($_GET["deleteaccount"]))
+	if(isset($_GET["deleteaccount"]) AND $f3->get("userid") != 1)
 	{
-		$f3->db->exec("DELETE FROM ".$f3->get("prefix")."user WHERE id = '". $f3->get("userid") ."'");
-		$f3->db->exec("DELETE FROM ".$f3->get("prefix")."stats WHERE user = '". $f3->get("userid") ."'");
-		
-		setcookie("userid", "", time()-60*60*90, "/");
-		setcookie("password", "", time()-60*60*90, "/");
-		
-		$f3->set("status", "account_deleted");
-		$f3->set("page", "login.htm");
-		
-		echo View::instance()->render("layout.htm");
-		exit;
+		if(check_password($f3->get("userid"), generate_password($_POST["password"], $f3->get("userid"))) == true)
+		{
+			$f3->db->exec("DELETE FROM ".$f3->get("prefix")."user WHERE id = '". $f3->get("userid") ."'");
+			$f3->db->exec("DELETE FROM ".$f3->get("prefix")."stats WHERE user = '". $f3->get("userid") ."'");
+			
+			setcookie("userid", "", time()-60*60*90, "/");
+			setcookie("password", "", time()-60*60*90, "/");
+			
+			$f3->set("status", "account_deleted");
+			$f3->set("page", "login.htm");
+		}
+		else {
+			$f3->set("accountDeletePassword", "notCorrect");
+		}
 	}
 
 
