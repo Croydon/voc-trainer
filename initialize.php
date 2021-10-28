@@ -3,7 +3,7 @@
 $f3 = require("f3/base.php");
 
 $f3->set("DEBUG", 1);
-if ((float)PCRE_VERSION<7.9)
+if ((float)PCRE_VERSION<8.0)
 	trigger_error("PCRE version is out of date");
 
 // Load configuration
