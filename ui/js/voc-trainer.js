@@ -54,7 +54,7 @@ function training_load_word()
 	
 	currentWordUnit = wordUnits[trainingI];
 	
-	$.getJSON("/getword", {wordUnitID: currentWordUnit}).success( function(data) 
+	$.getJSON("/getword", {wordUnitID: currentWordUnit}, function(data) 
 	{
 		if(data["status"] == 0)
 		{
@@ -76,7 +76,7 @@ function training_check_word()
 	
 	currentAnswer = $("input[name=wordTranslation]").val();
 	currentChecking = true;
-	$.getJSON("/checkword", {wordUnitID: currentWordUnit, userAnswer: currentAnswer}).success( function(data) 
+	$.getJSON("/checkword", {wordUnitID: currentWordUnit, userAnswer: currentAnswer}, function(data) 
 	{
 		if(data["status"] == 0)
 		{
