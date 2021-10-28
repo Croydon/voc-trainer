@@ -1,0 +1,11 @@
+<img src="ui/image/imprint.png">
+
+<hr>
+
+This website is provided 'as-is', without any express or implied warranty. 
+In no event will the authors be held liable for any damages arising from the use of this website.
+
+<h2 class="page-header">Licenses</h2>
+
+The code of this website is, like the Fat-Free Framework, on which the code is based on, licensed under the terms of GNU GPL 3.0, 
+while the database and the presentation are licensed under the terms of <a href="https://creativecommons.org/licenses/by/4.0/" target="_self">CC BY 4.0</a>.
